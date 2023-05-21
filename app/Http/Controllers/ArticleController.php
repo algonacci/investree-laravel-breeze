@@ -66,8 +66,10 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        return view('articles.edit', compact('article'));
+        $categories = Category::all(); // Fetch all categories
+        return view('articles.edit', compact('article', 'categories'));
     }
+
 
     /**
      * Update the specified resource in storage.

@@ -9,7 +9,6 @@
 <body>
     <div class="container">
         <h1>Daftar Artikel</h1>
-        <a href="{{ route('articles.create') }}" class="btn btn-primary mb-3">Tambah Artikel</a>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -24,6 +23,9 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->title }}</h5>
                             <p class="card-text">{{ $article->body }}</p>
+                            <p class="card-text">
+                                <span class="tag">{{ $article->category->name }}</span>
+                            </p> {{-- Display category name --}}
                             <a href="{{ route('articles.show', $article->id) }}" class="btn btn-primary">Baca
                                 Selengkapnya</a>
                             <form action="{{ route('articles.destroy', $article->id) }}" method="POST"
